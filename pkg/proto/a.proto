@@ -1,0 +1,19 @@
+syntax = "proto3";
+package default.a;
+
+option go_package = "pb/";
+
+// The greeting service definition.
+service A {
+    // Sends a greeting
+    rpc SayHello (HelloRequestA) returns (HelloReplyA);
+}
+
+// The request message containing the user's name.
+message HelloRequestA {
+    string name = 1;
+}
+// The response message containing the greetings
+message HelloReplyA {
+    string message = 1;
+}

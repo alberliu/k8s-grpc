@@ -1,0 +1,51 @@
+# deployment 配置
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a-deployment
+  labels:
+    app: a
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: a
+  template:
+    metadata:
+      labels:
+        app: a
+    spec:
+      containers:
+        - name: a
+          image: a
+          imagePullPolicy: IfNotPresent     # 在kind中需要指定，不然会强制到远程拉取镜像，导致部署失败
+          ports:
+            - containerPort: 80
+          volumeMounts: # 映射文件为宿主机文件
+            - mountPath: /log/
+              name: log
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+      volumes:
+        - name: log
+          hostPath:
+            path: /log/
+---
+# service 配置
+apiVersion: v1
+kind: Service
+metadata:
+  name: a
+  labels:
+    app: a  # 只有设置label,才能被服务发现找到
+spec:
+  selector:
+    app: a
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+

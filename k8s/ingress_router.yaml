@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simpleingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/default.b.B`)
+      services:
+        - name: b
+          port: 80
+          scheme: h2c
+    - kind: Rule
+      match: PathPrefix(`/default.a.A`)
+      services:
+        - name: a
+          port: 80
+          scheme: h2c
