@@ -12,6 +12,8 @@ rules:
       - services/status
       - endpoints
       - endpoints/status
+      - configmap
+      - configmap/status
     verbs:
       - get
       - list
