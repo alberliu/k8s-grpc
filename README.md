@@ -1,5 +1,5 @@
 # k8s-grpc
-k8s集成grpc,使用traefik作为网关
+k8s集成grpc,使用traefik作为网关,使用Helm作为Kubernetes的包管理器
 ### 前置条件
 首先保证安装docker和k8s集群，我本地使用kind搭建k8s集群  
 macOS使用kind搭建k8s集群  
