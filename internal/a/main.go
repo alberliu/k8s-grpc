@@ -15,7 +15,7 @@ import (
 type AServer struct{}
 
 func (s *AServer) SayHello(ctx context.Context, in *pb.HelloRequestA) (*pb.HelloReplyA, error) {
-	return &pb.HelloReplyA{Message: fmt.Sprintf("i im server a(%s)", os.Getenv("POD_IP"))}, nil
+	return &pb.HelloReplyA{Message: fmt.Sprintf("i im server a v3(%s)", os.Getenv("POD_IP"))}, nil
 }
 
 func main() {

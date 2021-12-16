@@ -23,7 +23,7 @@ func (s *BServer) SayHello(ctx context.Context, in *pb.HelloRequestB) (*pb.Hello
 	if err != nil {
 		return nil, err
 	}
-	return &pb.HelloReplyB{Message: fmt.Sprintf("i im server b(%s) from %s", os.Getenv("POD_IP"), reply.Message)}, nil
+	return &pb.HelloReplyB{Message: fmt.Sprintf("i im server b v3(%s) from %s", os.Getenv("POD_IP"), reply.Message)}, nil
 }
 
 func main() {
