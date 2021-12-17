@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"time"
 
 	"github.com/alberliu/k8s-grpc/pkg/grpclib/resolver/k8s"
 	"github.com/alberliu/k8s-grpc/pkg/logger"
@@ -19,6 +20,7 @@ var aClient pb.AClient
 type BServer struct{}
 
 func (s *BServer) SayHello(ctx context.Context, in *pb.HelloRequestB) (*pb.HelloReplyB, error) {
+	time.Sleep(2 * time.Second)
 	reply, err := aClient.SayHello(ctx, &pb.HelloRequestA{Name: "hello"})
 	if err != nil {
 		return nil, err

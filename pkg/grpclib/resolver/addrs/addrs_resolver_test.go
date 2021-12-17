@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"testing"
+	"time"
 
 	"github.com/alberliu/k8s-grpc/pkg/pb"
 	"google.golang.org/grpc"
@@ -15,7 +16,8 @@ func TestAddrsResolver(t *testing.T) {
 		panic(err)
 	}
 	client := pb.NewBClient(conn)
-	fmt.Println(client.SayHello(context.TODO(), &pb.HelloRequestB{Name: "hello"}))
+	ctx, _ := context.WithTimeout(context.TODO(), time.Second)
+	fmt.Println(client.SayHello(ctx, &pb.HelloRequestB{Name: "hello"}))
 	fmt.Println(client.SayHello(context.TODO(), &pb.HelloRequestB{Name: "hello"}))
 	fmt.Println(client.SayHello(context.TODO(), &pb.HelloRequestB{Name: "hello"}))
 	fmt.Println(client.SayHello(context.TODO(), &pb.HelloRequestB{Name: "hello"}))
