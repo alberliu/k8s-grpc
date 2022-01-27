@@ -47,3 +47,6 @@
 
  todo grpc的完整k8s部署
  尝试 treafik router 部署方式
+
+
+kubectl port-forward etcd-kind-control-plane 30080:2379 -n kube-system
