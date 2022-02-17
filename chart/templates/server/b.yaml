@@ -6,7 +6,7 @@ metadata:
   labels:
     app: b
 spec:
-  replicas: 1
+  replicas: {{ .Values.server.b.replicas }}
   selector:
     matchLabels:
       app: b
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: b
-          image: b
+          image: {{ .Values.server.b.image }}
           imagePullPolicy: IfNotPresent     # 在kind中需要指定，不然会强制到远程拉取镜像，导致部署失败
           ports:
             - containerPort: 80

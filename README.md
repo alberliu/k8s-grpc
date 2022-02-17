@@ -15,5 +15,4 @@ helm install k8s-grpc ./chart
 ### 现在集群已经创建完毕了，可以测试一下  
 将本地端口隐射到traefik的端口上，记得pod名称要改为你本地的traefik名称  
 kubectl port-forward traefik-95fcd5b9c-scw57 30080:8000   
-执行k8s-grpc/pkg/grpclib/resolver/k8s下的TestClient测试方法，检查代理是否成功  
-
+执行k8s-grpc/pkg/grpclib/resolver/k8s下的TestClient测试方法，检查代理是否成功
