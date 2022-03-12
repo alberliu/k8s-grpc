@@ -21,11 +21,11 @@ spec:
           imagePullPolicy: IfNotPresent     # 在kind中需要指定，不然会强制到远程拉取镜像，导致部署失败
           ports:
             - containerPort: 80
-          volumeMounts: # 映射文件为宿主机文件
+          volumeMounts:                     # 映射文件为宿主机文件
             - mountPath: /log/
               name: log
           env:
-            - name: POD_IP
+            - name: POD_IP                  # 将podIP注入环境变量
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
@@ -33,6 +33,7 @@ spec:
         - name: log
           hostPath:
             path: /log/
+
 ---
 # service 配置
 apiVersion: v1

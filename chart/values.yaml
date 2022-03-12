@@ -1,12 +1,7 @@
 server:
   a:
-    image: a:20220216.191443
+    image: a
     replicas: 3
   b:
-    image: b:20220216.192737
+    image: b
     replicas: 2
-
-
-image:
-  a: a:20220216.191443
-  b: b:20220216.192737

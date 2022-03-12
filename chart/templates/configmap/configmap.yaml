@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: user-info
 data:
-  # 类属性键；每一个键都映射到一个简单的值
+  # 类属性键；每一个键都映射到一个简单的值，仅仅支持键值对，不支持嵌套
   user: "alber"
   sex: "6"
 ---
@@ -12,9 +12,7 @@ kind: ConfigMap
 metadata:
   name: user-info1
 data:
-  # 类属性键；每一个键都映射到一个简单的值
   user: "alber"
   sex: "6"
-
 
 

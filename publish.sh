@@ -11,10 +11,13 @@ echo $image_name
 echo 开始发布服务$1
 # 构建镜像
 cd internal/$1
+# 打包可执行文件
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main
-docker build -t $image_name .
+# 都贱镜像
+docker build -t $image_name -t $image_name_latest .
 
 # 加载镜像到kind,如果是生产环境，需要推送到docker仓库
+kind load docker-image $image_name --name kind
 kind load docker-image $image_name --name kind
 
 cd ../..
