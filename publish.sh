@@ -21,6 +21,6 @@ kind load docker-image $image_name --name kind
 kind load docker-image $image_name --name kind
 
 cd ../..
-helm --set server.$1.image=$image_name upgrade k8s-grpc ./chart --reuse-values
+helm upgrade k8s-grpc ./chart --reuse-values --set server.$1.image=$image_name
 
 echo 成功发布服务$1
