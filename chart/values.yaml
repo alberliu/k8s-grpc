@@ -1,7 +1,9 @@
 server:
   a:
-    image: a
+    name: a
+    image: a:latest
     replicas: 3
   b:
-    image: b
+    name: b
+    image: b:latest
     replicas: 2

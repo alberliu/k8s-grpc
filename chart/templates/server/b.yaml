@@ -4,19 +4,19 @@ kind: Deployment
 metadata:
   name: b-deployment
   labels:
-    app: b
+    app: {{ .Values.server.b.name }}
 spec:
   replicas: {{ .Values.server.b.replicas }}
   selector:
     matchLabels:
-      app: b
+      app: {{ .Values.server.b.name }}
   template:
     metadata:
       labels:
-        app: b
+        app: {{ .Values.server.b.name }}
     spec:
       containers:
-        - name: b
+        - name: {{ .Values.server.b.name }}
           image: {{ .Values.server.b.image }}
           imagePullPolicy: IfNotPresent     # 在kind中需要指定，不然会强制到远程拉取镜像，导致部署失败
           ports:
@@ -38,12 +38,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: b
+  name: {{ .Values.server.b.name }}
   labels:
-    app: b  # 只有设置label,才能被服务发现找到
+    app: {{ .Values.server.b.name }}  # 只有设置label,才能被服务发现找到
 spec:
   selector:
-    app: b
+    app: {{ .Values.server.b.name }}
   ports:
     - protocol: TCP
       port: 80
